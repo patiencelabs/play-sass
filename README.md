@@ -10,12 +10,12 @@ Prerequisites
 [Sass][sass] compiler needs to be installed for plugin to work. This means that `sass` executable
 needs to be found in path. Sass can be installed by by installing `sass` gem.
 
-	gem install sass
+    gem install sass
 
 You can verify that `sass` has been installed by following command:
 
-	  % sass -v
-		Sass 3.1.16 (Brainy Betty)
+    % sass -v
+    Sass 3.1.16 (Brainy Betty)
 
 
 Installation
@@ -23,9 +23,9 @@ Installation
 
 Add following to your projects `project/plugins.sbt`
 
-  resolvers += "Patience Releases" at "http://repo.patience.io/"
+    resolvers += "Patience Releases" at "http://repo.patience.io/"
 
-	addSbtPlugin("net.litola" % "play-sass" % "0.1.1")
+    addSbtPlugin("net.litola" % "play-sass" % "0.1.0")
 
 This adds Sass asset compiler to Play project. `*.sass` and `*.scss` files in `app/assets` 
 directories will then be automatically compiled to `*.css` files. Files starting with 
