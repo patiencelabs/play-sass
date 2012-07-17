@@ -10,6 +10,10 @@ description := "SBT plugin for handling Sass assets in Play 2.0"
 
 resolvers += "Typesafe repository" at "http://repo.typesafe.com/typesafe/releases/"
 
+publishTo := Some(Resolver.sftp("Patience", "repo.patience.io", "repo"))
+
+resolvers += new MavenRepository("typesafe-releases", "http://repo.typesafe.com/typesafe/releases/")
+
 /// Dependencies
 
 libraryDependencies ++= Seq(
