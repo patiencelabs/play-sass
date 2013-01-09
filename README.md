@@ -25,7 +25,7 @@ Add following to your projects `project/plugins.sbt`
 
     resolvers += "Patience Releases" at "http://repo.patience.io/"
 
-    addSbtPlugin("net.litola" % "play-sass" % "0.1.0")
+    addSbtPlugin("net.litola" % "play-sass" % "0.1.2")
 
 This adds Sass asset compiler to Play project. `*.sass` and `*.scss` files in `app/assets` 
 directories will then be automatically compiled to `*.css` files. Files starting with 
@@ -34,6 +34,8 @@ directories will then be automatically compiled to `*.css` files. Files starting
 Versions
 --------
 
+* *0.1.2* [2012-11-16] Minimal windows support by Kalle Bertell. Changed to use
+	play 2.0.4.
 * *0.1.1* [2012-08-10] Dependency tracking for imported files. Should behave
 	correctly with incrementalAssetsCompilation := true. Changed to use play 2.0.3, sbt 0.11.3.
 * *0.1.0* [2012-05-04] Initial release
