@@ -1,7 +1,7 @@
 play-sass
 =========
 
-[Sass][sass] asset handling plugin for [Play 2.0][play]. Implemented as [sbt][sbt]
+[Sass][sass] asset handling plugin for [Play 2.1][play]. Implemented as [sbt][sbt]
 plugin.
 
 Prerequisites
@@ -25,7 +25,7 @@ Add following to your projects `project/plugins.sbt`
 
     resolvers += "Patience Releases" at "http://repo.patience.io/"
 
-    addSbtPlugin("net.litola" % "play-sass" % "0.1.2")
+    addSbtPlugin("net.litola" % "play-sass" % "0.1.3")
 
 This adds Sass asset compiler to Play project. `*.sass` and `*.scss` files in `app/assets` 
 directories will then be automatically compiled to `*.css` files. Files starting with 
@@ -34,6 +34,7 @@ directories will then be automatically compiled to `*.css` files. Files starting
 Versions
 --------
 
+* *0.1.3* [2012-12-19] Changed to use play 2.1-RC1.
 * *0.1.2* [2012-11-16] Minimal windows support by Kalle Bertell. Changed to use
 	play 2.0.4.
 * *0.1.1* [2012-08-10] Dependency tracking for imported files. Should behave
