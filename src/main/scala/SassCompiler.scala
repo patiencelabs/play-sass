@@ -8,8 +8,9 @@ import io.Source._
 
 object SassCompiler {
   def compile(sassFile: File, opts: Seq[String]): (String, Option[String], Seq[File]) = {
-    // for some reason Play is handing in a rjs parameter if RequireJS is active. Filter it out,
-    // as it puzzles the SASS compiler
+    // Filter out rjs option added by AssetsCompiler until we get clarity on what would
+    // be proper solution
+    // See: https://groups.google.com/d/topic/play-framework/VbhJUfVl-xE/discussion
     val options = opts.filter { _ != "rjs" }
     try {
       val parentPath = sassFile.getParentFile.getAbsolutePath
@@ -25,7 +26,7 @@ object SassCompiler {
       (cssOutput, Some(compressedCssOutput), allDependencies )
     } catch {
       case e: SassCompilationException => {
-        throw AssetCompilationException(e.file.orElse(Some(sassFile)), "Sass compiler: During compilation of '" + sassFile + "': " + e.message, Some(e.line), Some(e.column))
+        throw AssetCompilationException(e.file.orElse(Some(sassFile)), "Sass compiler: " + e.message, Some(e.line), Some(e.column))
       }
     }
   }

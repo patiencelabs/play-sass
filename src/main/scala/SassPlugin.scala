@@ -11,19 +11,18 @@ object SassPlugin extends Plugin {
         { file => (file ** "*.sass") +++ (file ** "*.scss") },
         sassEntryPoints,
         { (name, min) => 
-            val tmp = name.replace(".sass", if (min) ".min.css" else ".css") 
-            tmp.replace(".scss", if (min) ".min.css" else ".css")
+            name
+              .replace(".sass", if (min) ".min.css" else ".css") 
+              .replace(".scss", if (min) ".min.css" else ".css") 
         },
-        { SassCompiler.compile _ },
+        { (file, options) => SassCompiler.compile(file, options) },
         sassOptions
     )
 
-    override val settings = Seq(
+    val sassSettings = Seq(
         sassEntryPoints <<= (sourceDirectory in Compile)(base => ((base / "assets" ** "*.sass") +++ (base / "assets" ** "*.scss") --- base / "assets" ** "_*")), 
         sassOptions := Seq.empty[String],
         resourceGenerators in Compile <+= sassWatcher
     )
 }
 
-
-// vim: set ts=4 sw=4 et:
