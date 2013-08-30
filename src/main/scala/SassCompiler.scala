@@ -21,7 +21,7 @@ object SassCompiler {
         Seq(sassCommand, "-t", "compressed", "-I", parentPath) ++ options ++ Seq(sassFile.getAbsolutePath)
         )
 
-      val allDependencies = Seq(sassFile) ++ dependencies.map { new File(_) }
+      val allDependencies = dependencies.map { new File(_) }
       
       (cssOutput, Some(compressedCssOutput), allDependencies )
     } catch {
