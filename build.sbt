@@ -1,6 +1,8 @@
 name := "play-sass"
 
-version := "0.2.1"
+version := "0.2.2"
+
+crossScalaVersions := Seq("2.9.2")
 
 sbtPlugin := true
 
@@ -17,7 +19,7 @@ resolvers += new MavenRepository("typesafe-releases", "http://repo.typesafe.com/
 /// Dependencies
 
 libraryDependencies ++= Seq(
-  "org.scalatest" %% "scalatest" % "1.7.1" % "test"
+  "org.scalatest" %% "scalatest" % "1.9.1" % "test"
 )
 
-addSbtPlugin("play" % "sbt-plugin" % "2.1.1")
+addSbtPlugin("play" % "sbt-plugin" % "2.1.3")
