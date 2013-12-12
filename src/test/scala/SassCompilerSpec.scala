@@ -1,6 +1,7 @@
 import org.scalatest.FunSpec
 import java.io.File
 import net.litola.SassCompiler
+import play.PlayExceptions
 
 class SassCompilerSpec extends FunSpec {
   describe("SassCompiler") {
@@ -23,13 +24,13 @@ class SassCompilerSpec extends FunSpec {
     }
     it("should fail to compile malformed scss file") {
       val scssFile = new File("src/test/resources/broken.scss")
-      val thrown = intercept[sbt.PlayExceptions.AssetCompilationException] {
+      val thrown = intercept[PlayExceptions.AssetCompilationException] {
         SassCompiler.compile(scssFile, Nil)
       }
       val expectedMessage =
-        """Compilation error[Sass compiler: Syntax error: Invalid CSS after "	display: none;": expected "}", was ""]"""
+        """Syntax error: Invalid CSS after "	display: none;": expected "}", was ""]"""
       assert(thrown.line === 3)
-      assert(thrown.getMessage === expectedMessage)
+      assert(thrown.getMessage.contains(expectedMessage))
     }
   }
 }

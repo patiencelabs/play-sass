@@ -1,10 +1,8 @@
 package net.litola
 
-import sbt.PlayExceptions.AssetCompilationException
+import play.PlayExceptions.AssetCompilationException
 import java.io.File
 import scala.sys.process._
-import sbt.IO
-import io.Source._
 
 object SassCompiler {
   def compile(sassFile: File, opts: Seq[String]): (String, Option[String], Seq[File]) = {
@@ -21,7 +19,7 @@ object SassCompiler {
         Seq(sassCommand, "-t", "compressed", "-I", parentPath) ++ options ++ Seq(sassFile.getAbsolutePath)
         )
 
-      val allDependencies = Seq(sassFile) ++ dependencies.map { new File(_) }
+      val allDependencies = dependencies.map { new File(_) }
       
       (cssOutput, Some(compressedCssOutput), allDependencies )
     } catch {
